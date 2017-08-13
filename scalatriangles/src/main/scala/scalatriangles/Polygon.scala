@@ -1,6 +1,6 @@
 package scalatriangles
 
 /**
-  * Created by haljin on 8/13/17.
+  * An abstract polygon object.
   */
 abstract class Polygon {}

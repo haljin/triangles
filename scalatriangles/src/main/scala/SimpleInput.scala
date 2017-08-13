@@ -2,8 +2,14 @@ import scala.io.StdIn.readFloat
 import scalatriangles._
 import scalatriangles.Triangle._
 
+/** An application for inputting of triangles via cmd line.
+  */
 object SimpleInput extends App {
 
+  /**
+    * Reads the edge length from cmd line.
+    * @return a [[Some]] containing the length if the input was correct or [[None]] if not.
+    */
   private def read_edge(): Option[Double] = {
     try Some(readFloat())
     catch {
@@ -11,6 +17,11 @@ object SimpleInput extends App {
     }
   }
 
+  /**
+    * Get the edge from the cmd line.
+    * @param prompt prompt for the user
+    * @return the length of the triangle edge
+    */
   private def get_edge(prompt: String): Double = {
     print(prompt)
     read_edge() match {
