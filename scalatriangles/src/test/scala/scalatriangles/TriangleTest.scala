@@ -30,25 +30,10 @@ class TriangleTest extends FunSuite {
   }
 
   test("Triangle types") {
-    assert(Triangle(1, 1, 1) match {
-      case _: Triangle.EquilateralTriangle => true
-      case _ => fail
-    })
-    assert(Triangle(3, 3, 4) match {
-      case _: Triangle.IsoscelesTriangle => true
-      case _ => fail
-    })
-    assert(Triangle(3, 4, 3) match {
-      case _: Triangle.IsoscelesTriangle => true
-      case _ => fail
-    })
-    assert(Triangle(4, 3, 3) match {
-      case _: Triangle.IsoscelesTriangle => true
-      case _ => fail
-    })
-    assert(Triangle(3, 4, 5) match {
-      case _: Triangle.ScaleneTriangle => true
-      case _ => fail
-    })
+    assert(Triangle(1, 1, 1).edgeType == Equilateral)
+    assert(Triangle(3, 3, 4).edgeType == Isosceles)
+    assert(Triangle(3, 4, 3).edgeType == Isosceles)
+    assert(Triangle(4, 3, 3).edgeType == Isosceles)
+    assert(Triangle(3, 4, 5).edgeType == Scalene)
   }
 }

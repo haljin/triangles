@@ -1,6 +1,5 @@
 import scala.io.StdIn.readFloat
 import scalatriangles._
-import scalatriangles.Triangle._
 
 /** An application for inputting of triangles via cmd line.
   */
@@ -36,10 +35,10 @@ object SimpleInput extends App {
   val c = get_edge("Third edge:")
 
   try
-    Triangle(a, b, c) match {
-      case _: EquilateralTriangle => println("Your triangle is equilateral")
-      case _: IsoscelesTriangle => println("Your triangle is isosceles")
-      case _: ScaleneTriangle => println("Your triangle is scalene")
+      Triangle(a, b, c).edgeType match {
+      case Equilateral => println("Your triangle is equilateral")
+      case Isosceles => println("Your triangle is isosceles")
+      case Scalene => println("Your triangle is scalene")
     }
   catch {
     case _: IllegalArgumentException => println("That is not a valid triangle")

@@ -30,10 +30,7 @@ class TriangleProperty extends PropSpec with PropertyChecks {
       (edge: Int) =>
         val floatEdge = edge.toDouble
         val t = Triangle(floatEdge, floatEdge, floatEdge)
-        t match {
-          case _: Triangle.EquilateralTriangle => true
-          case _ => false
-        }
+        t.edgeType == Equilateral
     }
   }
 
@@ -42,10 +39,7 @@ class TriangleProperty extends PropSpec with PropertyChecks {
     forAll(validEdge, validEdge) {
       (edge: Int, base: Int) =>
         (2 * edge > base && edge + base > edge && base != edge) ==> {
-          Triangle(base.toDouble, edge.toDouble, edge.toDouble) match {
-            case _: Triangle.IsoscelesTriangle => true
-            case _ => false
-          }
+          Triangle(base.toDouble, edge.toDouble, edge.toDouble).edgeType == Isosceles
         }
     }
   }
@@ -55,10 +49,7 @@ class TriangleProperty extends PropSpec with PropertyChecks {
     forAll(triangle) {
       case (a, b, c) =>
         (a != b && a != c && b != c) ==> {
-          Triangle(a.toDouble, b.toDouble, c.toDouble) match {
-            case _: Triangle.ScaleneTriangle => true
-            case _ => false
-          }
+          Triangle(a.toDouble, b.toDouble, c.toDouble).edgeType == Scalene
         }
     }
   }
